@@ -14,6 +14,7 @@ Manage a NeoPixels with an Arduino-based controller directly from the browser by
   - [Table of Contents](#table-of-contents)
   - [ES6 module](#es6-module)
     - [Install](#install)
+  - [Arduino](#arduino)
     - [API Documentation](#api-documentation)
     - [Usage](#usage)
     - [Browser Support](#browser-support)
@@ -37,6 +38,20 @@ Install the `webusb-neopixel-controller` module into your project:
 ```
 npm install webusb-neopixel-controller
 ```
+
+
+## Arduino 
+
+To transform the Arduino into a WebUSB NeoPixel Controller, you need to install some dependencies:
+
+
+```
+git submodule update
+```
+
+It clones the following submodules:
+
+* [Adafruit_NeoPixel](https://github.com/adafruit/Adafruit_NeoPixel)
 
 
 ### API Documentation
