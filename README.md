@@ -71,7 +71,7 @@ activateButton.addEventListener('click', e => {
 
 Also make sure to take a look the [code behind the demo](#demo) to get more usage examples.
 
-The module is also used in [luminave](https://github.com/NERDDISCO/luminave) in it's [usb-dmx-manager](https://github.com/NERDDISCO/luminave/blob/master/src/components/usb-dmx-manager/index.js) component.
+The module is also used in [luminave](https://github.com/NERDDISCO/luminave).
 
 
 ### Browser Support
