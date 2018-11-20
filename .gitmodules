@@ -1,0 +1,3 @@
+[submodule "sketchbook/libraries/Adafruit_NeoPixel"]
+	path = sketchbook/libraries/Adafruit_NeoPixel
+	url = git@github.com:adafruit/Adafruit_NeoPixel.git
