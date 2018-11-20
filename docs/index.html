@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebUSB DMX512 Controller</title>
+    <style>
+      :root {
+        --space-start: .5em;
+        --space-end: 1em;
+        --space-around: .5em;
+      }
+
+      body {
+        font: 1em sans-serif;
+        margin: 0;
+      }
+
+      .row {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .column {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        padding: var(--space-around);
+      }
+
+      .column > .column {
+        padding: 0;
+      }
+
+      .element {
+        width: 100%;
+        font-size: 1em;
+      }
+
+      .full {
+        height: 10vh;
+      }
+
+      .start {
+        margin: 0 0 var(--space-start) 0;
+      }
+
+      .end {
+        margin: 0 0 var(--space-end) 0;
+      }
+
+      #console {
+        width: 60vw;
+        height: 55vh;
+        font: 1em monospace;
+        background: #2d323b;
+        color: #fff;
+        padding: var(--space-around);
+      }
+
+      h1 {
+        font-size: 1.7em;
+        margin: calc(var(--space-start) / 2) 0 0 0;
+      }
+
+      h3 {
+        margin: 0;
+        padding: .15em;
+        background: #ddd;
+      }
+
+      ul > li {
+        margin: 0 0 calc(var(--space-start) / 2) 0;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="column">
+      <h1>WebUSB NeoPixel Controller: Demo</h1>
+    </div>
+
+
+
+    <div class="row">
+
+      <div class="column">
+        <button id="activateWebUsb" class="element full start">Activate</button>
+        <button id="disconnectWebUsb" class="element full">Disconnect</button>
+      </div>
+
+
+
+      <div class="column">
+        <h3 class="start">Set Color</h3>
+
+        <form id="updateAnyChannel" class="column">
+          <label for="channel" class="start">LED</label>
+          <input id="changeChannel" name="channel" class="end" type="number" value="1" min="1" max="512">
+
+          
+          <input id="changeColor" name="color" type="color" class="element full end">
+
+          <button type="submit" id="changeChannelValue" class="element end">Update</button>
+        </form>
+
+        <hr class="element end">
+
+        <h3 class="start">Animations</h3>
+
+        <label for="black" class="start">Black</label>
+        <button name="black" type="button" id="animationBlack" class="element start">Play</button>
+
+        <label for="rainbow" class="start">Rainbow</label>
+        <button name="rainbow" type="button" id="animationRainbow" class="element end">Play</button>
+      </div>
+
+
+      <div class="column">
+        <h3 class="start">Console</h3>
+
+        <div class="row">
+          <label for="logLeds" class="start">Log LEDs</label>
+          <input id="logLeds" name="logLeds" type="checkbox">
+        </div>
+
+        <textarea id="console"></textarea>
+      </div>
+
+    </div>
+
+
+
+    <div class="column">
+      <ul>
+        <li>
+          You have no idea what this is about? Please read the article: <a href="https://medium.com/@timpietrusky/how-to-build-a-webusb-neopixel-controller-by-using-an-arduino-e0dd8efb7bf0">How to build a WebUSB DMX512 Controller by using an Arduino</a>
+        </li>
+        <li>
+          You need a <a href="https://github.com/NERDDISCO/webusb-neopixel-controller#browser-support">browser that supports ES6 modules + WebUSB</a> in order to use the demo
+        </li>
+        <li>
+          You can find the <a href="https://github.com/NERDDISCO/webusb-neopixel-controller">code on GitHub</a>
+        </li>
+      </ul>
+
+    </div>
+
+    <script type="text/javascript" src="demo.js"></script>
+  </body>
+</html>
