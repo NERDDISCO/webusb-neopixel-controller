@@ -46,6 +46,7 @@ To transform the Arduino into a WebUSB NeoPixel Controller, you need to install 
 
 
 ```
+git submodule init
 git submodule update
 ```
 
