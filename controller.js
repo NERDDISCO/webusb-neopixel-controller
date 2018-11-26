@@ -38,7 +38,7 @@ export default class Controller {
       { vendorId: 0x2886, productId: 0x8002 }
     ]
 
-    // The leds with 60 leds
+    // Initialize the array that holds the NeoPixels
     this.leds = args.leds || new Array(1 * 3).fill(0)
   }
 
@@ -161,11 +161,13 @@ export default class Controller {
     .then(() => {
       this.readLoop()
     })
-
-    // .catch(error => console.log(error))
   }
 
-
+  /**
+   * Read data from the NeoPixel Controller
+   *
+   * @return {Promise}
+   */
   readLoop() {
     // Get data from the USB device on Endpoint #5
     this.device.transferIn(5, 1).then(result => {
@@ -181,7 +183,7 @@ export default class Controller {
   /**
    * Send data to the USB device to update the leds
    *
-   * @param {Array} data - List containing all leds that should be updated in the leds
+   * @param {Array} data - List containing all leds that should be updated
    *
    * @return {Promise}
    * @example
@@ -212,11 +214,11 @@ export default class Controller {
    * @param {number} led - The led to update
    * @param {(number|number[])} value - The value to update the led, supporting two different modes: single (= <code>number</code>) & multi (= <code>Array</code>)
    * @example <caption>Update a single led</caption>
-   * // Update led #1
-   * controller.update(1, 255)
+   * // Update led #1 with color red (rgb(255, 0, 0))
+   * controller.update(1, [255, 0, 0])
    * @example <caption>Update multiple leds starting with led</caption>
-   * // Update led #5 with 255, #6 with 0 & #7 with 20
-   * controller.update(5, [255, 0, 20])
+   * // Update led #5 with red (rgb(255, 0, 0)), #6 with green (rgb(0, 255, 0))
+   * controller.update(5, [255, 0, 0, 0, 255, 0])
    */
   update(led, value) {
     return new Promise((resolve, reject) => {
@@ -225,16 +227,12 @@ export default class Controller {
       // * 3: Every LED can display an RGB color, so every 3 bytes in the array are one LED
       led = (led - 1) * 3
 
-      // Single
-      if (Number.isInteger(value)) {
-        this.leds.splice(led, 1, value)
-
       // Multiple
-      } else if (Array.isArray(value)) {
+      if (Array.isArray(value)) {
         this.leds.splice(led, value.length, ...value)
       
       } else {
-        return reject(new Error('Could not update LEDs because the provided value is not of type number or number[]'))
+        return reject(new Error('Could not update LEDs because the provided value is not of type number[]'))
       }
 
       // Send the updated leds to the controller
