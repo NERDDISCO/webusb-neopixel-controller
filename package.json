@@ -1,6 +1,6 @@
 {
   "name": "webusb-neopixel-controller",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Manage NeoPixels with an Arduino-based controller directly from the browser by leveraging WebUSB.",
   "main": "controller.js",
   "module": "controller.js",
