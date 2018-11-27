@@ -6,8 +6,9 @@
     * [.getPairedDevice()](#module_Controller+getPairedDevice) ⇒ <code>Promise</code>
     * [.autoConnect()](#module_Controller+autoConnect) ⇒ <code>Promise</code>
     * [.connect()](#module_Controller+connect) ⇒ <code>Promise</code>
+    * [.readLoop()](#module_Controller+readLoop) ⇒ <code>Promise</code>
     * [.send(data)](#module_Controller+send) ⇒ <code>Promise</code>
-    * [.updateUniverse(channel, value)](#module_Controller+updateUniverse)
+    * [.update(led, value)](#module_Controller+update)
     * [.disconnect()](#module_Controller+disconnect) ⇒ <code>Promise</code>
 
 <a name="module_Controller"></a>
@@ -24,8 +25,8 @@ By using the default <code>args</code> you will only see the following Arduino i
 | --- | --- | --- |
 | args | <code>Object</code> | Arguments to configure the controller |
 | args.filters | <code>Array.&lt;Object&gt;</code> | List of devices that are whitelisted when opening the user prompt to select an Arduino |
-| args.device | <code>Object</code> | The selected Arduino to use as the DMX512 controller |
-| args.universe | <code>Array.&lt;number&gt;</code> | Holds all the values for each channel of the DMX512 universe |
+| args.device | <code>Object</code> | The selected Arduino to use as the controller |
+| args.leds | <code>Array.&lt;number&gt;</code> | Holds all the values for each led of the leds |
 
 **Example**  
 ```js
@@ -85,40 +86,45 @@ controller.connect().then(() => {
   // Successfully created a connection to the selected Arduino
 })
 ```
+<a name="module_Controller+readLoop"></a>
+
+### controller.readLoop() ⇒ <code>Promise</code>
+Read data from the NeoPixel Controller
+
 <a name="module_Controller+send"></a>
 
 ### controller.send(data) ⇒ <code>Promise</code>
-Send data to the USB device to update the DMX512 universe
+Send data to the USB device to update the leds
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| data | <code>Array</code> | List containing all channels that should be updated in the universe |
+| data | <code>Array</code> | List containing all leds that should be updated |
 
 **Example**  
 ```js
 controller.send([255, 0, 0])
 ```
-<a name="module_Controller+updateUniverse"></a>
+<a name="module_Controller+update"></a>
 
-### controller.updateUniverse(channel, value)
-Update the <code>channel</code>(s) of the DMX512 universe with the provided <code>value</code>
+### controller.update(led, value)
+Update the <code>led</code>(s) of the leds with the provided <code>value</code>
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| channel | <code>number</code> | The channel to update |
-| value | <code>number</code> \| <code>Array.&lt;number&gt;</code> | The value to update the channel, supporting two different modes: single (= <code>number</code>) & multi (= <code>Array</code>) |
+| led | <code>number</code> | The led to update |
+| value | <code>number</code> \| <code>Array.&lt;number&gt;</code> | The value to update the led, supporting two different modes: single (= <code>number</code>) & multi (= <code>Array</code>) |
 
-**Example** *(Update a single channel)*  
+**Example** *(Update a single led)*  
 ```js
-// Update channel #1
-controller.updateUniverse(1, 255)
+// Update led #1 with color red (rgb(255, 0, 0))
+controller.update(1, [255, 0, 0])
 ```
-**Example** *(Update multiple channels starting with channel)*  
+**Example** *(Update multiple leds starting with led)*  
 ```js
-// Update channel #5 with 255, #6 with 0 & #7 with 20
-controller.updateUniverse(5, [255, 0, 20])
+// Update led #5 with red (rgb(255, 0, 0)), #6 with green (rgb(0, 255, 0))
+controller.update(5, [255, 0, 0, 0, 255, 0])
 ```
 <a name="module_Controller+disconnect"></a>
 
