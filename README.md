@@ -52,7 +52,7 @@ Can be found on [API documentation](docs/API.md).
 ```javascript
 import Controller from 'webusb-neopixel-controller/controller.js'
 
-const controller = new Controller()
+const controller = new Controller({ leds: 30 })
 const activateButton = document.getElementById('activateWebUsb')
 
 // Listen for click events on the activate button, because

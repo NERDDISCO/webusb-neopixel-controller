@@ -39,7 +39,7 @@ export default class Controller {
     ]
 
     // Initialize the array that holds the NeoPixels
-    this.leds = args.leds || new Array(1 * 3).fill(0)
+    this.leds = new Array(args.leds * 3).fill(0)
   }
 
   /**
