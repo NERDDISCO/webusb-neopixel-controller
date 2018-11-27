@@ -10,20 +10,18 @@ Manage a NeoPixels with an Arduino-based controller directly from the browser by
 
 <!-- toc -->
 
-- [WebUSB NeoPixel Controller](#webusb-neopixel-controller)
-  - [Table of Contents](#table-of-contents)
-  - [ES6 module](#es6-module)
-    - [Install](#install)
-    - [API Documentation](#api-documentation)
-    - [Usage](#usage)
-    - [Browser Support](#browser-support)
-  - [Arduino](#arduino)
-    - [Models](#models)
-    - [Sketch](#sketch)
-  - [NeoPixels](#neopixels)
-    - [Connect to Arduino](#connect-to-arduino)
-  - [Demo](#demo)
-    - [Run locally](#run-locally)
+- [ES6 module](#es6-module)
+  * [Install](#install)
+  * [API Documentation](#api-documentation)
+  * [Usage](#usage)
+  * [Browser Support](#browser-support)
+- [Arduino](#arduino)
+  * [Models](#models)
+  * [Sketch](#sketch)
+- [NeoPixels](#neopixels)
+  * [Connect to Arduino](#connect-to-arduino)
+- [Demo](#demo)
+  * [Run locally](#run-locally)
 
 <!-- tocstop -->
 
