@@ -1,14 +1,14 @@
 import Controller from '../controller.js'
 
 test('Use controller with default arguments', () => {
-  const controller = new Controller()
+  const controller = new Controller({ leds: 30 })
 
   // Device not defined
   expect(controller.device).toBe(undefined)
 
-  // Universe is an array with 512 values
-  expect(Array.isArray(controller.universe)).toBe(true)
-  expect(controller.universe.length).toBe(512)
+  // leds is an array with 30 leds
+  expect(Array.isArray(controller.leds)).toBe(true)
+  expect(controller.leds.length).toBe(30 * 3)
 
   // Filters is an array with 7 filtered devices
   expect(Array.isArray(controller.filters)).toBe(true)
@@ -17,22 +17,22 @@ test('Use controller with default arguments', () => {
 
 
 
-test('Use controller with custom arguments (device, universe and filters)', () => {
+test('Use controller with custom arguments (device, leds and filters)', () => {
   const controller = new Controller({
     filters: [],
-    universe: new Array(512).fill(1),
+    leds: 10,
     device: {}
   })
 
   expect(controller.filters).toEqual([])
-  expect(controller.universe[0]).toEqual(1)
+  expect(controller.leds.length).toEqual(10 * 3)
   expect(controller.device).toEqual({})
 })
 
 
 
 test('Arduino Leonardo is allowed', () => {
-  const controller = new Controller()
+  const controller = new Controller({ leds: 30 })
 
   expect(controller.filters).toContainEqual(
     expect.objectContaining({ vendorId: 0x2341, productId: 0x8036 })
@@ -51,7 +51,7 @@ test('Arduino Leonardo is allowed', () => {
 
 
 test('Arduino Leonardo ETH is allowed', () => {
-  const controller = new Controller()
+  const controller = new Controller({ leds: 30 })
 
   expect(controller.filters).toContainEqual(
     expect.objectContaining({ vendorId: 0x2a03, productId: 0x0040 })
@@ -64,7 +64,7 @@ test('Arduino Leonardo ETH is allowed', () => {
 
 
 test('Seeeduino Lite is allowed', () => {
-  const controller = new Controller()
+  const controller = new Controller({ leds: 30 })
 
   expect(controller.filters).toContainEqual(
     expect.objectContaining({ vendorId: 0x2886, productId: 0x8002 })
