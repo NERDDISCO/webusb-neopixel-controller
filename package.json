@@ -6,6 +6,9 @@
   "module": "controller.js",
   "jsnext:main": "controller.js",
   "unpkg": "umd/webusb-neopixel-controller.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "webpack-dev-server --hot --config webpack.demo.config.js",
     "test": "jest",
